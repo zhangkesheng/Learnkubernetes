@@ -1,7 +1,7 @@
 #!/bin/bash
+source ./param.sh
+
 # 下载kubectl
-k8sVersion=$1
-host=$2
 echo "k8sVersion: $k8sVersion";
 echo "host: $host"
 wget "https://dl.k8s.io/$k8sVersion/kubernetes-client-linux-amd64.tar.gz"
@@ -10,10 +10,13 @@ cp kubernetes/client/bin/kube* /usr/bin/
 chmod a+x /usr/bin/kube*
 # 创建kubeconfig文件
 ## 创建TLS Bootstrapping Token
+# 如果是master就创建token
+if [ ${isMaster} ]; then
 export BOOTSTRAP_TOKEN=$(head -c 16 /dev/urandom|od -An -t x|tr -d ' ')
 cat > /etc/kubernetes/token.csv <<EOF
 ${BOOTSTRAP_TOKEN},kubelet-bootstrap,10001,"system:kubelet-bootstrap"
 EOF
+fi
 
 ## 创建 kubelet bootstrapping kubeconfig 文件
 export KUBE_APISERVER="https://$host:6443"
