@@ -16,7 +16,7 @@ etcdName=infra1
 etcdInitialCluster=infra1=https://192.168.10.56:2380,infra2=https://192.168.10.57:2380,infra3=https://192.168.10.58:2380
 # nginx
 masterHostList="server 192.168.10.56:8080;server 192.168.10.57:8080;server 192.168.10.58:8080;"
-nginxLoadBalancingHost=http://192.168.10.56
+nginxLoadBalancingHost=http://192.168.10.58
 nginxLoadBalancingPort=8888
 # kubernetesc
 k8sVersion=v1.8.4

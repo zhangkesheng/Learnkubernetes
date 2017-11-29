@@ -1,5 +1,6 @@
 # Learnkubernetes
 步骤:
+要选择一台服务器为主要操作机器, 在上面生成ca证书及token.csv
 1. 修改param.sh 的参数
 2. 选择一个做负载均衡服务器, 执行: `bash step0_set_nginx_load_balancing.sh`
 3. 选择一个服务器, 执行ca里面的 `init.sh`, 并将pem文件cp到其他主机上
