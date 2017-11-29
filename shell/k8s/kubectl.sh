@@ -1,6 +1,10 @@
 #!/bin/bash
 source ./param.sh
 
+## 翻墙
+export http_proxy=http://192.168.32.10:6780
+export https_proxy=http://192.168.32.10:6780
+export no_proxy=".aliyun.com,.aliyuncs.com,.daocloud.io,localhost,$host"
 # 下载kubectl
 echo "k8sVersion: $k8sVersion";
 echo "host: $host"
