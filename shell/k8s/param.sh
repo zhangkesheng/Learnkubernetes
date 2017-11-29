@@ -4,6 +4,7 @@ echo "set params"
 isMaster=true
 # 如果是master则会生成token.csv, 并且需要执行生成ca证书的脚本
 # 不是则需要cp token.csv和ca证书
+#mkdir -p /etc/kubernetes/ssl
 #scp root@192.168.10.56:/etc/kubernetes/token.csv /etc/kubernetes/
 #scp root@192.168.10.56:/etc/kubernetes/ssl/* /etc/kubernetes/ssl/
 #
