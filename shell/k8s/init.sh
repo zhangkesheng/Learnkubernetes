@@ -18,7 +18,7 @@ echo "https_proxy: $https_proxy"
 echo "no_proxy: $no_proxy"
 ## Etcd
 # [member]
-export ETCD_NAME=etcdName
+export ETCD_NAME=$etcdName
 export ETCD_DATA_DIR="/var/lib/etcd"
 export ETCD_LISTEN_PEER_URLS="https://$host:2380"
 export ETCD_LISTEN_CLIENT_URLS="https://$host:2379,https://$host:4001"
