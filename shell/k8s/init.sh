@@ -19,11 +19,11 @@ echo "no_proxy: $no_proxy"
 export ETCD_NAME=infra1
 export ETCD_DATA_DIR="/var/lib/etcd"
 export ETCD_LISTEN_PEER_URLS="https://$host:2380"
-# export ETCD_LISTEN_CLIENT_URLS="https://$host:2379"
+export ETCD_LISTEN_CLIENT_URLS="https://$host:2379,https://$host:4001"
 #[cluster]
 export ETCD_INITIAL_ADVERTISE_PEER_URLS="https://$host:2380"
 export ETCD_INITIAL_CLUSTER_TOKEN="etcd-cluster"
-# export ETCD_ADVERTISE_CLIENT_URLS="https://$host:2379"
+export ETCD_ADVERTISE_CLIENT_URLS="https://$host:2379,https://$host:4001"
 
 #bash
 echo "run shell"
