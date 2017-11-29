@@ -1,6 +1,9 @@
 #!/bin/bash
 source ./param.sh
 
+if [ ! -d /var/lib/kubelet ]; then
+  mkdir -p /var/lib/kubelet
+fi
 # 配置
 export KUBE_LOGTOSTDERR="--logtostderr=true"
 export KUBE_LOG_LEVEL="--v=${kubeLogLevel}"
