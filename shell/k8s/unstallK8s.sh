@@ -16,3 +16,6 @@ rm /etc/systemd/system/etcd.service
 rm /etc/systemd/system/kube-apiserver.service
 rm /etc/systemd/system/kube-controller-manager.service
 rm /etc/systemd/system/kube-scheduler.service
+
+#重启
+reboot

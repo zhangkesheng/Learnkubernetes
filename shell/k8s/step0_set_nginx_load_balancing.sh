@@ -19,5 +19,5 @@ server {
     }
 }
 EOF
-docker run -d --name k8snginx -p ${nginxLoadBalancingPort}:${nginxLoadBalancingPort} \
+docker run -d --name k8snginx -p ${nginxLoadBalancingPort}:${nginxLoadBalancingPort} --privileged=true \
 -v /srv/nginx/conf.d:/etc/nginx/conf.d nginx:alpine

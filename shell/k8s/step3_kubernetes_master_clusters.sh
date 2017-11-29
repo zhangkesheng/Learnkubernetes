@@ -6,8 +6,6 @@ export http_proxy=http://192.168.32.10:6780
 export https_proxy=http://192.168.32.10:6780
 export no_proxy=".aliyun.com,.aliyuncs.com,.daocloud.io,localhost,$host"
 
-bash kubectl.sh ${k8sVersion} ${host}
-
 # logging to stderr means we get it in the systemd journal
 export KUBE_LOGTOSTDERR="--logtostderr=true"
 

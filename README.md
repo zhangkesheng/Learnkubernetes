@@ -6,5 +6,5 @@
 4. 执行 `bash step1_prepare.sh`
 5. 将生成的 `/etc/kubernetes/token.csv` cp到其他服务器上
 6. 执行 `bash step2_set_etcd.sh`, 需要在所有主机上同时执行
-7. 检查etcd 状态
+7. 检查etcd 状态 `etcdctl --ca-file=/etc/kubernetes/ssl/ca.pem --cert-file=/etc/kubernetes/ssl/kubernetes.pem --key-file=/etc/kubernetes/ssl/kubernetes-key.pem cluster-health`
 8. 执行 `bash step3_kubernetes_master_clusters.sh`
