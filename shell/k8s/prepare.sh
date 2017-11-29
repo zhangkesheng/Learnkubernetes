@@ -10,13 +10,13 @@ do
 done
 ## kubernetes目录
 if [ ! -d "/etc/kubernetes" ]; then
-	mkdir -p "/etc/kubernetes";
+	mkdir -p /etc/kubernetes;
 fi
 # 如果工作目录不存在, 创建工作目录
 if [ ! -d $dir ]; then
 	mkdir -p $dir;
 fi
-
+swapoff -a
 #docker
 ## docker 版本
 curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -

@@ -50,3 +50,5 @@ systemctl daemon-reload
 systemctl enable etcd
 systemctl start etcd
 #systemctl status etcd
+
+export ETCDCTL_ENDPOINT=https://127.0.0.1:2379
