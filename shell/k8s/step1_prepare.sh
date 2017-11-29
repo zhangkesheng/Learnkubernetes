@@ -1,5 +1,5 @@
 #!/bin/bash
-clusters=$1
+source ./param.sh
 echo $clusters
 # 设置防火墙
 clusterHosts=$(echo $clusters|tr "," "\n")
@@ -34,3 +34,5 @@ Environment="HTTP_PROXY=http://192.168.32.10:6780"
 Environment="HTTPS_PROXY=http://192.168.32.10:6780"
 Environment="NO_PROXY=.aliyun.com,.aliyuncs.com,.daocloud.io,.cn,localhost"
 EOF
+
+bash kubectl.sh

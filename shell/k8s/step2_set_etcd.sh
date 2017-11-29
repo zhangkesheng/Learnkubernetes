@@ -24,5 +24,4 @@ export ETCD_ADVERTISE_CLIENT_URLS="https://$host:2379,https://$host:4001"
 
 #bash
 echo "run shell"
-bash prepare.sh ${clusters}
 bash etcd.sh ${etcdInitialCluster}
