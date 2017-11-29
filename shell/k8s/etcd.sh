@@ -2,8 +2,8 @@
 
 ## 下载并安装etcd
 wget -O "etcd-linux-amd64.tar.gz" "https://github.com/coreos/etcd/releases/download/v3.2.10/etcd-v3.2.10-linux-amd64.tar.gz"
-tar -xvf "etcd-linux-amd64.tar.gz"
-mv "etcd-v3.2.10-linux-amd64/etcd*" /usr/local/bin
+tar -xvf "etcd-linux-amd64.tar.gz" -C "etcd-linux-amd64"
+mv "etcd-linux-amd64/etcd*" /usr/local/bin
 
 # 创建工作目录
 if [ -d "/var/lib/etcd" ]; then
