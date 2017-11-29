@@ -1,5 +1,5 @@
 #!/bin/bash
-
+etcdInitialCluster=$1
 ## 下载并安装etcd
 wget -O "etcd-linux-amd64.tar.gz" "https://github.com/coreos/etcd/releases/download/v3.2.10/etcd-v3.2.10-linux-amd64.tar.gz"
 mkdir etcd-linux-amd64
@@ -35,7 +35,7 @@ ExecStart=/usr/local/bin/etcd \
   --listen-client-urls ${ETCD_LISTEN_CLIENT_URLS},https://127.0.0.1:2379 \
   --advertise-client-urls ${ETCD_ADVERTISE_CLIENT_URLS} \
   --initial-cluster-token ${ETCD_INITIAL_CLUSTER_TOKEN} \
-  --initial-cluster infra1=$clusters \
+  --initial-cluster ${etcdInitialCluster} \
   --initial-cluster-state new \
   --data-dir=${ETCD_DATA_DIR}
 Restart=on-failure
