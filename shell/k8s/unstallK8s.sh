@@ -6,6 +6,10 @@ rm -R /home/zks
 rm /usr/bin/kube*
 rm /usr/bin/etcd*
 export KUBE_APISERVER=
+service etcd stop
+service kube-apiserver stop
+service kube-controller-manager stop
+service kube-scheduler stop
 systemctl stop etcd,kube-apiserver,kube-controller-manager,kube-scheduler
 systemctl disable etcd,kube-apiserver,kube-controller-manager,kube-scheduler
 rm /etc/systemd/system/etcd.service
