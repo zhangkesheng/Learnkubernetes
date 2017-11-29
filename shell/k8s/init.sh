@@ -14,8 +14,19 @@ export no_proxy=".aliyun.com,.aliyuncs.com,.daocloud.io,localhost,$host"
 echo "http_proxy: $http_proxy"
 echo "https_proxy: $https_proxy"
 echo "no_proxy: $no_proxy"
+## Etcd
+# [member]
+export ETCD_NAME=infra1
+export ETCD_DATA_DIR="/var/lib/etcd"
+export ETCD_LISTEN_PEER_URLS="https://$host:2380"
+# export ETCD_LISTEN_CLIENT_URLS="https://$host:2379"
+#[cluster]
+export ETCD_INITIAL_ADVERTISE_PEER_URLS="https://$host:2380"
+export ETCD_INITIAL_CLUSTER_TOKEN="etcd-cluster"
+# export ETCD_ADVERTISE_CLIENT_URLS="https://$host:2379"
 
 #bash
 echo "run shell"
 bash prepare.sh $clusters
 bash kubectl.sh $k8sVersion $host
+bash etcd.sh
