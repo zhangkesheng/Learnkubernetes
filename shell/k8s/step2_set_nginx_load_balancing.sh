@@ -7,7 +7,7 @@ docker pull nginx:alpine
 if [ ! -d /srv/nginx/conf.d ]; then
 mkdir -p /srv/nginx/conf.d
 fi
-cat /srv/nginx/conf.d/k8smaster.conf <<EOF
+cat > /srv/nginx/conf.d/k8smaster.conf <<EOF
 upstream k8sMaster {
     ${masterHostList}
 }
@@ -20,4 +20,4 @@ server {
 }
 EOF
 docker run -d --name k8snginx -p ${nginxLoadBalancingPort}:${nginxLoadBalancingPort} \
--v /srv/nginx/conf.d:/etc/nginx/conf.d nginx:alpin
+-v /srv/nginx/conf.d:/etc/nginx/conf.d nginx:alpine
