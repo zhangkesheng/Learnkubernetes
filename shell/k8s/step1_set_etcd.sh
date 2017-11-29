@@ -1,11 +1,6 @@
 #!/bin/bash
-# params
-echo "set params"
-host=192.168.10.56
-clusters=192.168.10.56,192.168.10.57,192.168.10.58
-k8sVersion=v1.8.4
-etcdName=infra1
-etcdInitialCluster=infra1=https://192.168.10.56:2380,infra2=https://192.168.10.57:2380,infra3=https://192.168.10.58:2380
+#param
+source ./param.sh
 
 # export
 echo "export env"
@@ -18,7 +13,7 @@ echo "https_proxy: $https_proxy"
 echo "no_proxy: $no_proxy"
 ## Etcd
 # [member]
-export ETCD_NAME=$etcdName
+export ETCD_NAME=${etcdName}
 export ETCD_DATA_DIR="/var/lib/etcd"
 export ETCD_LISTEN_PEER_URLS="https://$host:2380"
 export ETCD_LISTEN_CLIENT_URLS="https://$host:2379,https://$host:4001,https://127.0.0.1:4001"
@@ -29,6 +24,6 @@ export ETCD_ADVERTISE_CLIENT_URLS="https://$host:2379,https://$host:4001"
 
 #bash
 echo "run shell"
-bash prepare.sh $clusters
-bash kubectl.sh $k8sVersion $host
-bash etcd.sh $etcdInitialCluster
+bash prepare.sh ${clusters}
+bash kubectl.sh ${k8sVersion} ${host}
+bash etcd.sh ${etcdInitialCluster}
