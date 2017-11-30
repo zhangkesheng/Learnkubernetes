@@ -5,11 +5,7 @@ if [ ! -d /var/lib/kubelet ]; then
   mkdir -p /var/lib/kubelet
 fi
 swapoff -a
-# 授权
-kubectl create clusterrolebinding kubelet-bootstrap \
-  --clusterrole=system:node-bootstrapper \
-  --user=kubelet-bootstrap \
-  --kubeconfig=/etc/kubernetes/bootstrap.kubeconfig
+
 # 配置
 export KUBE_LOGTOSTDERR="--logtostderr=true"
 export KUBE_LOG_LEVEL="--v=${kubeLogLevel}"
@@ -33,7 +29,7 @@ export KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=registry.access.
 ## Add your own!
 # --cgroup-driver=systemd 的配置需要跟docker一样
 #--kubeconfig=/etc/kubernetes/kubelet.kubeconfig
-export KUBELET_ARGS="--kubeconfig=/etc/kubernetes/kubelet.kubeconfig --cgroup-driver=cgroupfs --cluster-dns=10.254.0.2 --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig --require-kubeconfig --cert-dir=/etc/kubernetes/ssl --cluster-domain=cluster.local --hairpin-mode promiscuous-bridge --serialize-image-pulls=false"
+export KUBELET_ARGS="--kubeconfig=/etc/kubernetes/kubelet.kubeconfig --cgroup-driver=cgroupfs --cluster-dns=10.254.0.2 --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig --cert-dir=/etc/kubernetes/ssl --cluster-domain=cluster.local --hairpin-mode promiscuous-bridge --serialize-image-pulls=false"
 
 cat > /etc/systemd/system/kubelet.service <<EOF
 [Unit]
