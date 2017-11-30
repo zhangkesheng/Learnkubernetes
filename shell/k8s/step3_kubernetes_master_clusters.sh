@@ -21,13 +21,13 @@ export KUBE_MASTER="--master=${nginxLoadBalancingHost}:${nginxLoadBalancingPort}
 
 ## The address on the local server to listen to.
 #KUBE_API_ADDRESS="--insecure-bind-address=sz-pg-oam-docker-test-001.tendcloud.com"
-export KUBE_API_ADDRESS="--advertise-address=${host} --bind-address=${host} --insecure-bind-address=${host}"
+export KUBE_API_ADDRESS="--insecure-bind-address=0.0.0.0"
 #
 ## The port on the local server to listen on.
 export KUBE_API_PORT="--port=8080"
 #
 ## Port minions listen on
-#export KUBELET_PORT="--kubelet-port=10250"
+export KUBELET_PORT="--kubelet-port=10250"
 #
 ## Comma separated list of nodes in the etcd cluster
 export KUBE_ETCD_SERVERS="--etcd-servers=${kubeEtcdServers}"
