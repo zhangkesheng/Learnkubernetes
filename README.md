@@ -7,9 +7,9 @@
 4. 执行 `bash step1_prepare.sh`
 5. 将生成的 `/etc/kubernetes/token.csv` cp到其他服务器上
 6. 执行 `bash step2_set_etcd.sh`, 需要在所有主机上同时执行
-7. 检查etcd 状态 `etcdctl --ca-file=/etc/kubernetes/ssl/ca.pem --cert-file=/etc/kubernetes/ssl/kubernetes.pem --key-file=/etc/kubernetes/ssl/kubernetes-key.pem cluster-health`
+7. 检查etcd 状态 `export ETCDCTL_ENDPOINT=https://127.0.0.1:2379` `etcdctl --ca-file=/etc/kubernetes/ssl/ca.pem --cert-file=/etc/kubernetes/ssl/kubernetes.pem --key-file=/etc/kubernetes/ssl/kubernetes-key.pem cluster-health`
 8. 执行 `bash step3_kubernetes_master_clusters.sh`
-9. 检查master状态 `kubectl get componentstatuses`
+9. 检查master状态 `kubectl --server=192.168.10.56:8080 get componentstatuses`
 10. 手动添加授权
     `cd /etc/kubernetes \
     kubectl create clusterrolebinding kubelet-bootstrap \

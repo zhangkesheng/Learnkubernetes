@@ -24,3 +24,5 @@ kubeEtcdServers=https://192.168.10.56:2379,https://192.168.10.57:2379,https://19
 serviceClusterIpRange=10.254.0.0/16
 kubeLogLevel=0
 apiserverCount=3
+#dashboard
+dashboardImage=gcr.io/google_containers/kubernetes-dashboard-amd64:v1.8.0
