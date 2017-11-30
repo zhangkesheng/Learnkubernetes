@@ -4,6 +4,12 @@ source ./param.sh
 if [ ! -d /var/lib/kubelet ]; then
   mkdir -p /var/lib/kubelet
 fi
+swapoff -a
+# 授权
+kubectl create clusterrolebinding kubelet-bootstrap \
+  --clusterrole=system:node-bootstrapper \
+  --user=kubelet-bootstrap \
+  --kubeconfig=/etc/kubernetes/bootstrap.kubeconfig
 # 配置
 export KUBE_LOGTOSTDERR="--logtostderr=true"
 export KUBE_LOG_LEVEL="--v=${kubeLogLevel}"
@@ -13,7 +19,7 @@ export KUBE_MASTER="--master=${nginxLoadBalancingHost}:${nginxLoadBalancingPort}
 export KUBELET_ADDRESS="--address=${host}"
 #
 ## The port for the info server to serve on
-export KUBELET_PORT="--port=10250"
+#export KUBELET_PORT="--port=10250"
 #
 ## You may leave this blank to use the actual hostname
 export KUBELET_HOSTNAME="--hostname-override=${host}"
@@ -27,7 +33,7 @@ export KUBELET_POD_INFRA_CONTAINER="--pod-infra-container-image=registry.access.
 ## Add your own!
 # --cgroup-driver=systemd 的配置需要跟docker一样
 #--kubeconfig=/etc/kubernetes/kubelet.kubeconfig
-export KUBELET_ARGS="--kubeconfig=/etc/kubernetes/kubelet.kubeconfig --cgroup-driver=systemd --cluster-dns=10.254.0.2 --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig --require-kubeconfig --cert-dir=/etc/kubernetes/ssl --cluster-domain=cluster.local --hairpin-mode promiscuous-bridge --serialize-image-pulls=false"
+export KUBELET_ARGS="--kubeconfig=/etc/kubernetes/kubelet.kubeconfig --cgroup-driver=cgroupfs --cluster-dns=10.254.0.2 --experimental-bootstrap-kubeconfig=/etc/kubernetes/bootstrap.kubeconfig --require-kubeconfig --cert-dir=/etc/kubernetes/ssl --cluster-domain=cluster.local --hairpin-mode promiscuous-bridge --serialize-image-pulls=false"
 
 cat > /etc/systemd/system/kubelet.service <<EOF
 [Unit]
