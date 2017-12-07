@@ -18,6 +18,9 @@ export KUBE_ALLOW_PRIV="--allow-privileged=true"
 # How the controller-manager, scheduler, and proxy find the apiserver
 #KUBE_MASTER="--master=http://sz-pg-oam-docker-test-001.tendcloud.com:8080"
 export KUBE_MASTER="--master=${nginxLoadBalancingHost}:${nginxLoadBalancingPort}"
+if [ -z "${nginxLoadBalancingHost}" ]; then
+  export KUBE_MASTER="--master=${host}:8080"
+fi
 
 ## The address on the local server to listen to.
 #KUBE_API_ADDRESS="--insecure-bind-address=sz-pg-oam-docker-test-001.tendcloud.com"

@@ -25,6 +25,9 @@ export KUBE_LOGTOSTDERR="--logtostderr=true"
 export KUBE_LOG_LEVEL="--v=${kubeLogLevel}"
 export KUBE_ALLOW_PRIV="--allow-privileged=true"
 export KUBE_MASTER="--master=${nginxLoadBalancingHost}:${nginxLoadBalancingPort}"
+if [ -z "${nginxLoadBalancingHost}" ]; then
+  export KUBE_MASTER="--master=${host}:8080"
+fi
 ## The address for the info server to serve on (set to 0.0.0.0 or "" for all interfaces)
 export KUBELET_ADDRESS="--address=${host}"
 #
