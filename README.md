@@ -34,3 +34,5 @@ etcdctl \
 11. 执行 `bash step4_kubernetes_node.sh`
 
 12. 执行 `kubectl get csr`查看未授权的 CSR 请求, `kubectl certificate approve csr-2b308`通过 CSR 请求
+
+13. 安装dashboard, 执行 `bash step5_dashboard.sh`

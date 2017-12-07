@@ -96,7 +96,7 @@ spec:
           timeoutSeconds: 30
       tolerations:
       - key: "CriticalAddonsOnly"
-operator: "Exists"
+        operator: "Exists"
 EOF
 cd dashboard
 kubectl create -f  .
