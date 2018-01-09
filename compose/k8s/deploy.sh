@@ -29,3 +29,4 @@ services:
       - '2379:2379'
       - '2380:2380'
 EOF
+docker-compose up -d
