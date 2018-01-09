@@ -20,5 +20,5 @@ done
 NODENAME=${node1}
 NODE_IP=${node1}
 ETCD_NODES="etcd-${node1}:https://${node1}:2380,etcd-${node2}:https://${node2}:2380,etcd-${node3}:https://${node3}:2380"
-bash deploy.sh
+./deploy.sh
 
