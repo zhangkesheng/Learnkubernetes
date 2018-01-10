@@ -1,6 +1,6 @@
 #!/bin/bash
 SERVER_IP=$1
-cat >/etcd/kubernetes/kubecfg-controller.yml <<EOF
+cat >/etc/kubernetes/kubecfg-controller.yml <<EOF
 apiVersion: v1
 kind: Config
 clusters:
@@ -22,7 +22,7 @@ users:
     client-key: /etc/kubernetes/kube-controller-key.pem
 EOF
 
-cat >/etcd/kubernetes/kubecfg-scheduler.yml <<EOF
+cat >/etc/kubernetes/kubecfg-scheduler.yml <<EOF
 apiVersion: v1
 kind: Config
 clusters:
@@ -44,7 +44,7 @@ users:
     client-key: /etc/kubernetes/kube-scheduler-key.pem
 EOF
 
-cat >/etcd/kubernetes/kubecfg-proxy.yml <<EOF
+cat >/etc/kubernetes/kubecfg-proxy.yml <<EOF
 apiVersion: v1
 kind: Config
 clusters:
@@ -66,7 +66,7 @@ users:
     client-key: /etc/kubernetes/kube-proxy-key.pem
 EOF
 
-cat >/etcd/kubernetes/kubecfg-kubelet.yml <<EOF
+cat >/etc/kubernetes/kubecfg-kubelet.yml <<EOF
 apiVersion: v1
 kind: Config
 clusters:
