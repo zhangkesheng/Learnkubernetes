@@ -20,7 +20,7 @@ services:
               --runtime-config=authentication.k8s.io/v1beta1=true \
               --runtime-config=extensions/v1beta1/podsecuritypolicy=true \
               --storage-backend=etcd3 \
-              --etcd-servers=https://${node1}:2379,https://${node2}:2380,https://${node3}:2380 \
+              --etcd-servers=${ETCD_SERVERS} \
               --etcd-cafile=/etc/kubernetes/etcd-cs-ca.pem \
               --etcd-certfile=/etc/kubernetes/etcd-client.pem \
               --etcd-keyfile=/etc/kubernetes/etcd-client-key.pem \

@@ -31,6 +31,7 @@ fi
 export NODE_NAME=${node}
 export NODE_IP=${node}
 export ETCD_INITIAL_CLUSTER="etcd-${node1}=https://${node1}:2380,etcd-${node2}=https://${node2}:2380,etcd-${node3}=https://${node3}:2380"
+export ETCD_SERVERS="https://${node1}:2379,https://${node2}:2380,https://${node3}:2380"
 export SERVICE_CLUSTER_IP_RANGE=${SERVICE_CLUSTER_IP_RANGE}
 export CLUSTER_CIDR=${CLUSTER_CIDR}
 export CLUSTER_DNS=${CLUSTER_DNS}
