@@ -1,9 +1,8 @@
 #!/bin/bash
-source ../config
-
+nodes=192.168.10.56,192.168.10.57,192.168.10.58
 for node in ${nodes//,/ }
 do
-   echo "User entered node :" \"${node}\",
+   echo "Use node :" \"${node}\",
 done
 
 bash install_cfssl.sh

@@ -37,4 +37,4 @@ cat >kube-ca.json <<EOF
 ]
 }
 EOF
-cfssl gencert -initca ca-csr.json -config=ca-config.json | cfssljson -bare kube-ca
+cfssl gencert -initca kube-ca.json -config=ca-config.json | cfssljson -bare kube-ca
