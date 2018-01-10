@@ -3,7 +3,7 @@
 source ./config.sh
 
 # 获取传入的参数
-node=${node1}
+node=""
 while getopts "n:" arg
 do
     case $arg in
@@ -16,19 +16,21 @@ do
             ;;
     esac
 done
-
-if [ ! -d "/etcd/kubernetes" ]; then
-    mkdir p /etcd/kubernetes
+if [ -z "${node}" ]; then
+    echo "please enter node ip. option -n"
+fi
+if [ ! -d "/etc/kubernetes" ]; then
+    mkdir -p /etc/kubernetes
 fi
 echo "generate service config"
-bash 1generate_service_config.sh masterIp
+bash 1generate_service_config.sh ${masterIp}
 
 if [ ! -d "daemons" ]; then
   mkdir daemons
 fi
 export NODE_NAME=${node}
 export NODE_IP=${node}
-export ETCD_INITIAL_CLUSTER="etcd-${node1}:https://${node1}:2380,etcd-${node2}:https://${node2}:2380,etcd-${node3}:https://${node3}:2380"
+export ETCD_INITIAL_CLUSTER="etcd-${node1}=https://${node1}:2380,etcd-${node2}=https://${node2}:2380,etcd-${node3}=https://${node3}:2380"
 export SERVICE_CLUSTER_IP_RANGE=${SERVICE_CLUSTER_IP_RANGE}
 export CLUSTER_CIDR=${CLUSTER_CIDR}
 export CLUSTER_DNS=${CLUSTER_DNS}

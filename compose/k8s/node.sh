@@ -28,7 +28,7 @@ services:
               --pod-infra-container-image=bestmike007/pause-amd64:3.0 \
               --cgroups-per-qos=True \
               --enforce-node-allocatable= \
-              --hostname-override=${node} \
+              --hostname-override=${NODE_IP} \
               --cluster-dns=${CLUSTER_DNS} \
               --network-plugin=cni \
               --cni-conf-dir=/etc/cni/net.d \
@@ -38,8 +38,8 @@ services:
               --cloud-provider= \
               --kubeconfig=/etc/kubernetes/kubecfg-kubelet.yml \
               --require-kubeconfig=True \
-              --fail-swap-on=false" \
-              --eviction-hard=${EVICTION_HARD}
+              --fail-swap-on=false \
+              --eviction-hard=${EVICTION_HARD}"
   kube-proxy:
     image: bestmike007/hyperkube:v1.9.1
     container_name: kube-proxy
