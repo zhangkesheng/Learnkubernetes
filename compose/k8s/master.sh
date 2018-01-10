@@ -1,5 +1,4 @@
 #!/bin/bash
-source ./init.sh
 
 cat >daemons/kube-master.yml <<EOF
 version: '2'

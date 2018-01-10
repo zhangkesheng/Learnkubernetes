@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ./init.sh
-
 cat >daemons/kube-node.yml <<EOF
 version: '2'
 services:

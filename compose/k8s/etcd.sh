@@ -1,7 +1,5 @@
 #!/bin/bash
 
-source ./init.sh
-
 cat >daemons/etcd.yml <<EOF
 version: '2'
 services:

@@ -142,20 +142,20 @@ cfssl gencert -ca=kube-ca.pem -ca-key=kube-ca-key.pem -config=ca-config.json \
 cfssljson -bare kube-api
 
 # Copy certs to kubernetes config directory(/etc/kubernetes on each master)
-mkdir /etc/kubernetes
-cp kube-ca.pem /etc/kubernetes
-cp kubelet.pem /etc/kubernetes
-cp kubelet-key.pem /etc/kubernetes
+mkdir kubernetes
+cp kube-ca.pem kubernetes
+cp kubelet.pem kubernetes
+cp kubelet-key.pem kubernetes
 # masters only
-cp etcd-cs-ca.pem /etc/kubernetes
-cp etcd-client.pem /etc/kubernetes
-cp etcd-client-key.pem /etc/kubernetes
-cp kube-service-account.key /etc/kubernetes
-cp kube-api.pem /etc/kubernetes
-cp kube-api-key.pem /etc/kubernetes
-cp kube-controller.pem /etc/kubernetes
-cp kube-controller-key.pem /etc/kubernetes
-cp kube-scheduler.pem /etc/kubernetes
-cp kube-scheduler-key.pem /etc/kubernetes
-cp kube-proxy.pem /etc/kubernetes
-cp kube-proxy-key.pem /etc/kubernetes
+cp etcd-cs-ca.pem kubernetes
+cp etcd-client.pem kubernetes
+cp etcd-client-key.pem kubernetes
+cp kube-service-account.key kubernetes
+cp kube-api.pem kubernetes
+cp kube-api-key.pem kubernetes
+cp kube-controller.pem kubernetes
+cp kube-controller-key.pem kubernetes
+cp kube-scheduler.pem kubernetes
+cp kube-scheduler-key.pem kubernetes
+cp kube-proxy.pem kubernetes
+cp kube-proxy-key.pem kubernetes
