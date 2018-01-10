@@ -2,23 +2,8 @@
 node1=192.168.10.56
 node2=192.168.10.57
 node3=192.168.10.58
-# 获取传入的参数
-node=node1
-while getopts "n:" arg
-do
-    case $arg in
-         n)
-            node="$OPTARG"
-            ;;
-         ?)
-            echo "unkonw argument"
-            return;
-            ;;
-    esac
-done
-
-NODENAME=${node1}
-NODE_IP=${node1}
-ETCD_NODES="etcd-${node1}:https://${node1}:2380,etcd-${node2}:https://${node2}:2380,etcd-${node3}:https://${node3}:2380"
-./deploy.sh
-
+masterIp=192.168.10.56
+SERVICE_CLUSTER_IP_RANGE=172.18.0.0/18
+CLUSTER_CIDR=172.18.64.0/18
+CLUSTER_DNS=172.18.0.3
+EVICTION_HARD="memory.available<5Gi,nodefs.available<10%"
