@@ -17,7 +17,7 @@ echo "generate config"
 bash 0generate_ca_config.sh
 
 echo "generate etcd cerificates"
-bash 10generate_etcd_pem.sh${nodes}
+bash 1generate_etcd_pem.sh ${nodes}
 
 echo "generate kubernetes cerificates"
 bash 2generate_kubernetes_pem.sh ${nodes} "172.18.0.1"
