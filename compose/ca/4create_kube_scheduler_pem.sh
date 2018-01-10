@@ -18,4 +18,4 @@ cat >kube-scheduler-csr.json <<EOF
   ]
 }
 EOF
-cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json kube-scheduler-csr.json | cfssljson -bare kube-scheduler
+cfssl gencert -ca=kube-ca.pem -ca-key=kube-ca-key.pem -config=ca-config.json kube-scheduler-csr.json | cfssljson -bare kube-scheduler

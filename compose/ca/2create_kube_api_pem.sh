@@ -35,4 +35,4 @@ cat >kube-api-csr.json <<EOF
     ]
 }
 EOF
-cfssl gencert -ca=ca.pem -ca-key=ca-key.pem -config=ca-config.json kube-api-csr.json | cfssljson -bare kube-api
+cfssl gencert -ca=kube-ca.pem -ca-key=kube-ca-key.pem -config=ca-config.json kube-api-csr.json | cfssljson -bare kube-api
