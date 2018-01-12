@@ -18,7 +18,7 @@ do
 done
 if [ -z "${node}" ]; then
     echo "please enter node ip. option -n"
-    return;
+    exit 1
 fi
 if [ ! -d "/etc/kubernetes" ]; then
     mkdir -p /etc/kubernetes
