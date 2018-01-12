@@ -47,7 +47,7 @@ services:
               --pod-eviction-timeout=5m0s \
               --v=2 \
               --allocate-node-cidrs=true \
-              --cluster-cidr=${CLUSTER_CIDR} \
+#              --cluster-cidr=${CLUSTER_CIDR} \
               --service-cluster-ip-range=${SERVICE_CLUSTER_IP_RANGE} \
               --service-account-private-key-file=/etc/kubernetes/kube-service-account.key \
               --root-ca-file=/etc/kubernetes/kube-ca.pem \

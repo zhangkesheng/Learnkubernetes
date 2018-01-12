@@ -2,6 +2,7 @@
 node1=192.168.10.56
 node2=192.168.10.57
 node3=192.168.10.58
+KUBE_API_CLUSTER_IP=172.18.0.1
 nodes="${node1},${node2},${node3}"
 
 for node in ${nodes//,/ }
@@ -22,13 +23,13 @@ echo "generate etcd cerificates"
 bash 1generate_etcd_pem.sh ${nodes}
 
 echo "generate kubernetes cerificates"
-bash 2generate_kubernetes_pem.sh ${nodes} "172.18.0.1"
+bash 2generate_kubernetes_pem.sh ${nodes} ${KUBE_API_CLUSTER_IP}
 
 echo "distribute the certificate"
-scp etcd/* root@${node1}:/etc/etcd/
-scp etcd/* root@${node2}:/etc/etcd/
-scp etcd/* root@${node3}:/etc/etcd/
+scp -r etcd root@${node1}:/etc/etcd
+scp -r etcd root@${node2}:/etc/etcd
+scp -r etcd root@${node3}:/etc/etcd
 
-scp kubernetes/* root@${node1}:/etc/kubernetes/
-scp kubernetes/* root@${node2}:/etc/kubernetes/
-scp kubernetes/* root@${node3}:/etc/kubernetes/
+scp -r kubernetes root@${node1}:/etc/kubernetes
+scp -r kubernetes root@${node2}:/etc/kubernetes
+scp -r kubernetes root@${node3}:/etc/kubernetes

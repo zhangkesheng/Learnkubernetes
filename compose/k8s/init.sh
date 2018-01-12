@@ -18,6 +18,7 @@ do
 done
 if [ -z "${node}" ]; then
     echo "please enter node ip. option -n"
+    return;
 fi
 if [ ! -d "/etc/kubernetes" ]; then
     mkdir -p /etc/kubernetes
@@ -39,4 +40,3 @@ export EVICTION_HARD=${EVICTION_HARD}
 bash etcd.sh
 bash master.sh
 bash node.sh
-

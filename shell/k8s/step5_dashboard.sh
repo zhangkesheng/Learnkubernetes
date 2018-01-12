@@ -76,7 +76,7 @@ spec:
       serviceAccountName: dashboard
       containers:
       - name: kubernetes-dashboard
-        image: ${dashboardImage}
+        image: registry.cn-hangzhou.aliyuncs.com/zks-test/kubernetes-dashboard-amd64:v1.8.0
         resources:
           limits:
             cpu: 100m
@@ -86,8 +86,6 @@ spec:
             memory: 50Mi
         ports:
         - containerPort: 9090
-        args:
-          - --apiserver-host=${nginxLoadBalancingHost}:${nginxLoadBalancingPort}
         livenessProbe:
           httpGet:
             path: /
