@@ -35,8 +35,31 @@ export ETCD_INITIAL_CLUSTER="etcd-${node1}=https://${node1}:2380,etcd-${node2}=h
 export ETCD_SERVERS="https://${node1}:2379,https://${node2}:2380,https://${node3}:2380"
 export SERVICE_CLUSTER_IP_RANGE=${SERVICE_CLUSTER_IP_RANGE}
 export CLUSTER_CIDR=${CLUSTER_CIDR}
-export CLUSTER_DNS=${CLUSTER_DNS}
 export EVICTION_HARD=${EVICTION_HARD}
+
+export CLUSTER_DNS=${CLUSTER_DNS}
+export CLUSTER_DOMAIN=${CLUSTER_DOMAIN}
+export KUBEDNS_IMAGE=${KUBEDNS_IMAGE}
+export DNSMASQ_IMAGE=${DNSMASQ_IMAGE}
+export KUBEDNS_SIDECAR_IMAGE=${KUBEDNS_SIDECAR_IMAGE}
+export KUBEDNS_AUTOSCALER_IMAGE=${KUBEDNS_AUTOSCALER_IMAGE}
+
 bash etcd.sh
 bash master.sh
 bash node.sh
+bash dns.sh
+
+ufw allow proto tcp from 192.168.32.14 to any port 6783
+ufw allow proto tcp from 192.168.32.15 to any port 6783
+ufw allow proto tcp from 192.168.32.16 to any port 6783
+ufw allow proto udp from 192.168.32.14 to any port 6783
+ufw allow proto udp from 192.168.32.15 to any port 6783
+ufw allow proto udp from 192.168.32.16 to any port 6783
+ufw allow proto udp from 192.168.32.14 to any port 6784
+ufw allow proto udp from 192.168.32.15 to any port 6784
+ufw allow proto udp from 192.168.32.16 to any port 6784
+
+#for arg in `find ~/k8s-configurations/projects -name "*.yaml"`
+#do
+#    kubectl apply -f ${arg}
+#done

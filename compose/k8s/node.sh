@@ -24,6 +24,7 @@ services:
     - /opt/cni/bin:/opt/cni/local/bin:rw
     command: bash -c "cp /opt/cni/bin/* /opt/cni/local/bin && \
               /usr/local/bin/kubelet \
+              -v=2 \
               --address=0.0.0.0 \
               --cluster-domain=cluster.local \
               --pod-infra-container-image=bestmike007/pause-amd64:3.0 \

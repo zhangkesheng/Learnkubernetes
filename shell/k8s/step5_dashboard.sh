@@ -28,7 +28,7 @@ spec:
 
 EOF
 
-cat > dashboard/dashboard-rbac.yaml <<EOF
+cat > dashboard-rbac.yaml <<EOF
 apiVersion: v1
 kind: ServiceAccount
 metadata:
